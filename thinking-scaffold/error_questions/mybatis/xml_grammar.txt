@@ -1,0 +1,5 @@
+1、mybatis如何计算分页
+https://blog.csdn.net/timchen525/article/details/79647666
+a、在xml中计算
+LIMIT ${(page - 1) * limit},${limit}
+b、在Java类中计算，在传入。

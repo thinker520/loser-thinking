@@ -1,0 +1,9 @@
+https://csapi.62618086.com/ms/game/h5/nav?companyId=691393&type=1
+
+https://csapi.62618086.com/ms/game/h5/nav?companyId=691393&type=1
+
+http://api.ly9900.com/api/telcode.jsp?mobile=手机号&token=RQIeo04dvSqu523K&tstr=年月日时
+http://api.ly9900.com/api/rip.jsp?ip=
+
+
+https://api.allin998.com/cs/game/pc/nav?userToken=638cefdc65edfaf73eb7a0a0506c56c2&companyId=9487&type=1

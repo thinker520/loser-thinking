@@ -1,0 +1,8 @@
+1、Failed to execute goal on project thinking-file-transfer-station: 
+Could not resolve dependencies for project com.loser.think:thinking-file-
+transfer-station:jar:0.0.1-SNAPSHOT: Failed to collect dependencies at 
+com.loser.think:thinking-common:jar:0.0.1-SNAPSHOT: Failed to read artifact 
+descriptor for com.loser.think:thinking-common:jar:0.0.1-SNAPSHOT: Could not 
+find artifact com.loser.think:loser-think:pom:0.0.1-SNAPSHOT -> [Help 1]
+
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thinking.scaffold.dao.PermissionDao" >
+    <sql id="BASE_TABLE">
+        loser_permission
+    </sql>
+
+    <sql id="BASE_COLUMN">
+        id,pid,type,permission,url,updatetime,createtime,create_by
+    </sql>
+
+    <insert id="insert" parameterType="com.thinking.scaffold.model.User">
+        INSERT INTO
+        <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            userName,password,
+            <if test="phone != null">
+                phone,
+            </if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            #{userName, jdbcType=VARCHAR},#{password, jdbcType=VARCHAR},
+            <if test="phone != null">
+                #{phone, jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="deleteUserById">
+      DELETE FROM
+      <include refid="BASE_TABLE"/>
+      WHERE
+      userId = #{userId, jdbcType=INTEGER}
+    </delete>
+    <!-- 更新用户信息，为空的字段不进行置空 -->
+    <update id="updateUser" parameterType="com.thinking.scaffold.model.User">
+        UPDATE
+        <include refid="BASE_TABLE"/>
+        <set>
+          <if test="userName != null">
+              useruame = #{useruame, jdbcType=VARCHAR},
+          </if>
+          <if test="password != null">
+              password = #{password, jdbcType=VARCHAR},
+          </if>
+        </set>
+        <where>
+            id = #{id, jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <select id="selectUsers" resultType="com.thinking.scaffold.model.User">
+        SELECT
+        <include refid="BASE_COLUMN"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+    </select>
+</mapper>

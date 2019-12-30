@@ -1,0 +1,68 @@
+1、layui table td如何设置为自适应宽度？
+直接不设置width的值就可以。
+2、layui table自定义返回结果的方法
+parseData:function(ret) {}
+for example:
+parseData: function(res){ //res 即为原始返回的数据
+return {
+  "code": res.status, //解析接口状态
+  "msg": res.message, //解析提示文本
+  "count": res.total, //解析数据长度
+  "data": res.data.item //解析数据列表
+}
+3、 layui table的toolbar如何绑定事件？
+for example:
+//监听事件
+table.on('toolbar(test)', function(obj){
+  var checkStatus = table.checkStatus(obj.config.id);
+  switch(obj.event){
+    case 'add':
+      layer.msg('添加');
+    break;
+    case 'delete':
+      layer.msg('删除');
+    break;
+    case 'update':
+      layer.msg('编辑');
+    break;
+  };
+});
+4、layui table 需要怎样的返回数据结构？
+such as:
+return {
+  "code": res.status, //解析接口状态
+  "msg": res.message, //解析提示文本
+  "count": res.total, //解析数据长度
+  "data": res.data.item //解析数据列表
+};
+5、layui 如何自定义table分页请求参数？
+for example：
+request: {
+    pageName: 'curr' //页码的参数名称，默认：page
+    ,limitName: 'nums' //每页数据量的参数名，默认：limit
+}
+6、layui 自定义返回数据结构？
+response: {
+    statusName: 'status' //规定数据状态的字段名称，默认：code
+    ,statusCode: 200 //规定成功的状态码，默认：0
+    ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+    ,countName: 'total' //规定数据总数的字段名称，默认：count
+    ,dataName: 'rows' //规定数据列表的字段名称，默认：data
+  }
+7、layui 自定义排序
+//“方法级渲染”配置方式
+table.render({ //其它参数在此省略
+  initSort: {
+    field: 'id' //排序字段，对应 cols 设定的各字段名
+    ,type: 'desc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
+  }
+});
+
+8、获取选定行的数据？
+该方法可获取到表格所有的选中行相关数据
+【方法渲染】
+table.render({ //其它参数省略
+  id: 'idTest'
+});
+var checkStatus = table.checkStatus('idTest'); //idTest 即为基础参数 id 对应的值
+

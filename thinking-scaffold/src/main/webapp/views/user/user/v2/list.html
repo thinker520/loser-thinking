@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>User List</title>
+<link rel="stylesheet" href="../../../../layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../../../../layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+	<table id="demo" lay-filter="test"></table>
+	<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+    <button class="layui-btn layui-btn-sm" lay-event="delete">删除</button>
+    <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
+  </div>
+	</script>
+	<script src="/layuiadmin/layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use('table', function(){
+			var table = layui.table;
+			table.render({
+				elem: '#demo',
+				height: 'full-20',
+				toolbar:'#toolbarDemo',
+				//url: 'test.json',
+				url: '/user/list',
+				page: true,
+				cols:[[
+					{field:'id',title:'ID',type: 'checkbox',sort:true,fixed:'left'},
+					{field:'userName',title:'用户名'},
+					{field:'password',title:'用户密码'},
+					{field:'salt',title:'盐'},
+					{field:'updatetime',title:'更新时间'},
+					{field:'createtime',title:'创建时间'}
+				]],
+				parseData : function(res) {
+					res.count = 100;
+					console.log("--------------data from back--------------")
+					console.log(res)
+					console.log("--------------data from back--------------")
+					var retOBJ = {};
+					return res;
+				}
+			});
+			
+			//监听事件
+			table.on('toolbar(test)', function(obj){
+			  var checkStatus = table.checkStatus(obj.config.id);
+			  switch(obj.event){
+			    case 'add':
+			      //layer.msg('添加');
+			      var title = '添加用户';
+			      var type = 1;
+			      layer.open({
+					  type: 2, //类型，解析url
+					  closeBtn: 1, //关闭按钮是否显示 1显示0不显示
+					  title: title, //页面标题
+					  maxmin: true,
+					  shadeClose: true, //点击遮罩区域是否关闭页面
+					  shade: 0.8,  //遮罩透明度
+					  area: ['900px', '500px'],  //弹出层页面比例
+					  content: 'userAdd.html',//弹出层的url 
+					  btn: ['确认', '取消'],
+					  btn1: function(index) {
+						  var body = top.layer.getChildFrame('body', index);
+						  var iframeWin = window[layero.find('iframe')[0]['name']];
+						  console.log(body);
+						  //var test1 = body.find("#test").val();//方法一
+						  //var test2 = $(layero).find("#test").val();//方法二
+						 // username
+						  //body.find
+					  },
+					  btn2: function(index) {
+						  alert("cancel:" + index);
+					  }
+				  }); 
+			    break;
+			    case 'delete':
+			      layer.msg('删除');
+			    break;
+			    case 'update':
+			      //layer.msg('编辑');
+			      var title = '编辑用户';
+			      var type = 1;
+			      layer.open({
+					  type: 2, //类型，解析url
+					  closeBtn: 1, //关闭按钮是否显示 1显示0不显示
+					  title: title, //页面标题
+					  maxmin: true,
+					  shadeClose: true, //点击遮罩区域是否关闭页面
+					  shade: 0.8,  //遮罩透明度
+					  area: ['900px', '500px'],  //弹出层页面比例
+					  content: 'https://www.facebook.com/'+type //弹出层的url 
+				  }); 
+			    break;
+			  };
+			});
+		});
+		
+	</script>
+</body>
+</html>

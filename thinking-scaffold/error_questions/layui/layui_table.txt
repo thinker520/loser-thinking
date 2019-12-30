@@ -1,0 +1,4 @@
+layui table use guide.
+1、how to setting table full height?
+height:'full-10'
+

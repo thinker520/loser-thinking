@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Table Use Simple</title>
+<link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+</head>
+<body>
+<table id="demo" lay-filter="test"></table>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+    <button class="layui-btn layui-btn-sm" lay-event="delete">删除</button>
+    <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
+	<input class="layui-input" name="keyword"/>
+	<button class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
+  </div>
+</script>
+<script type="text/javascript">
+	layui.use('table', function() {
+		var table = layui.table;
+		table.render({
+			elem:'#demo',
+			//height: 312,
+			url:'data.json',
+			page:true,
+			toolbar:true,
+			toolbar: '#toolbarDemo',
+			cols:[[
+				{field:'ID',title:'ID',width:80,sort:true,fixed:'left'},
+				{field:'LOGINNAME',title:'LOGINNAME',width:80},
+				{field:'PASSWORD',title:'PASSWORD'},
+				{field:'REGTIME',title:'REGTIME'},
+				{field:'CREATETIME',title:'CREATETIME'},
+				{field:'UPDATETIME',title:'UPDATETIME'},
+				{field:'SIGN',title:'SIGN'},
+				{field:'ADDRESS',title:'ADDRESS'},
+				{field:'PHONE',title:'PHONE'},
+				{field:'REGIP',title:'REGIP'},
+				{field:'LASTLOGINTIME',title:'LASTLOGINTIME'},
+				{field:'IDENTIFY',title:'IDENTIFY'},
+				{field:'IMG',title:'IMG'},
+				{field:'EMAIL',title:'EMAIL'},
+				{field:'FACEBOOK',title:'FACEBOOK'},
+				{field:'VIP_LEVEL',title:'VIP_LEVEL'}
+			]]
+		});
+	});
+</script>
+</body>
+</html>

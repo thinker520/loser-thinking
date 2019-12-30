@@ -1,0 +1,42 @@
+1、异常信息：org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: 
+There is no getter for property named 'userName' in 'class java.lang.String'
+解决这个问题的方法：@Param
+UserDao User findByUserName(@Param("userName") String username);
+
+2、问题2： Parameter 'useruame' not found. Available parameters are [userName, param1]
+
+3、问题3：Unknown column 'useruame' in 'where clause'
+where子句中的未知字段useruame 应该是字段写错了
+
+#############################shiro的用户salt怎么获得#############################
+1、shrio密码生成
+String hashAlgorithmName = "MD5";//加密方式
+Object crdentials = "1111aaaa";//密码原值
+Object salt = "" + System.currentTimeMillis();//盐值
+int hashIterations = 1024;//加密1024次
+Object result = new SimpleHash(hashAlgorithmName,crdentials,salt,hashIterations);
+System.out.println("result:" + result + " salt:" + salt);
+result:c4c0961cd9e4590e88d0c5363e4a3cb8 salt:1576309716010
+这种密码用于登录，最终校验登录失败。
+
+原因就是：ShiroConfig 设定的加密的参数所以，用户加密password的时候要根据ShiroConfig
+这里设置的参数来进行加密。
+HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+//md5加密1次
+hashedCredentialsMatcher.setHashAlgorithmName("md5");
+hashedCredentialsMatcher.setHashIterations(1);
+return hashedCredentialsMatcher;
+
+2、下一个问题
+No serializer found for class org.apache.shiro.authz.permission.WildcardPermissionResolver 
+and no properties discovered to create BeanSerializer (to avoid exception, 
+disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: org.thinking.common.CommonResult["data"]
+->org.apache.shiro.web.subject.support.WebDelegatingSubject["securityManager"]
+->org.apache.shiro.web.mgt.DefaultWebSecurityManager["realms"]->java.util.ArrayList[0]
+->com.thinking.scaffold.config.UserRealm["permissionResolver"])
+原因是：Subject user = SecurityUtils.getSubject();
+这个对象无法序列化导致的。
+
+
+
+

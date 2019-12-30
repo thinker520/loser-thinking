@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.loser.think</groupId>
+		<artifactId>loser-think</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>thinking-scaffold</artifactId>
+	<packaging>jar</packaging>
+	<name>thinking-scaffold Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		<!-- depend thinking common -->
+		<dependency>
+			<groupId>com.loser.think</groupId>
+			<artifactId>thinking-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- depend jdbc -->
+		<!-- 
+			配置参考：https://www.jianshu.com/p/89e48fb45e0e
+		 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!-- mybatis一定要使用starter，不然无法自动配置和注入 -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<!-- shiro 
+			参考网址：https://blog.csdn.net/gnail_oug/article/details/80662553
+		-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring-boot-starter</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        <!-- 热部署模块
+        	参考：https://blog.csdn.net/liyanghao809433131/article/details/80506975
+         -->
+		<dependency>
+		   <groupId>org.springframework.boot</groupId>
+		   <artifactId>spring-boot-devtools</artifactId>
+		   <optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<finalName>thinking-scaffold</finalName>
+		<plugins>
+			<plugin>
+			   <groupId>org.springframework.boot</groupId>
+			   <artifactId>spring-boot-maven-plugin</artifactId>
+			   <configuration>
+			      <fork>true</fork>
+			   </configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
