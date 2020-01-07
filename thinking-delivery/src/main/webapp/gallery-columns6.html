@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link href="css/nifty.min.css"  rel="stylesheet">
+    <link href="plugins/pace/pace.min.css"  rel="stylesheet">
+    <script src="plugins/pace/pace.min.js" ></script>       
+</head>
+<body>
+                    
+	<div id="demo-gallery" style="display:none;">
+	    <a href="#">
+	        <img alt="The winding road"
+	             src="img/gallery/thumbs/tile1.jpg" 
+	             data-image="img/gallery/big/tile1.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="Pancake"
+	             src="img/gallery/thumbs/tile2.jpg" 
+	             data-image="img/gallery/big/tile2.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="Foreshore"
+	             src="img/gallery/thumbs/tile3.jpg" 
+	             data-image="img/gallery/big/tile3.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="Yellow Flowers"
+	             src="img/gallery/thumbs/tile4.jpg" 
+	             data-image="img/gallery/big/tile4.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="Waterfall"
+	             src="img/gallery/thumbs/tile5.jpg" 
+	             data-image="img/gallery/big/tile5.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="Pumpkin"
+	             src="img/gallery/thumbs/tile6.jpg" 
+	             data-image="img/gallery/big/tile6.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="In the jungle"
+	             src="img/gallery/thumbs/tile7.jpg" 
+	             data-image="img/gallery/big/tile7.jpg"
+	             style="display:none">
+	    </a>
+
+	    <a href="#">
+	        <img alt="Note"
+	             src="img/gallery/thumbs/tile8.jpg" 
+	             data-image="img/gallery/big/tile8.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="Off-Road Motorcycle"
+	             src="img/gallery/thumbs/tile9.jpg" 
+	             data-image="img/gallery/big/tile9.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="Adventure"
+	             src="img/gallery/thumbs/tile10.jpg" 
+	             data-image="img/gallery/big/tile10.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="The winding road"
+	             src="img/gallery/thumbs/tile1.jpg" 
+	             data-image="img/gallery/big/tile1.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="Pancake"
+	             src="img/gallery/thumbs/tile2.jpg" 
+	             data-image="img/gallery/big/tile2.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="Foreshore"
+	             src="img/gallery/thumbs/tile3.jpg" 
+	             data-image="img/gallery/big/tile3.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="Yellow Flowers"
+	             src="img/gallery/thumbs/tile4.jpg" 
+	             data-image="img/gallery/big/tile4.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="Waterfall"
+	             src="img/gallery/thumbs/tile5.jpg" 
+	             data-image="img/gallery/big/tile5.jpg"
+	             style="display:none">
+	    </a>					
+	    <a href="#">
+	        <img alt="Pumpkin"
+	             src="img/gallery/thumbs/tile6.jpg" 
+	             data-image="img/gallery/big/tile6.jpg"
+	             style="display:none">
+	    </a>
+	    <a href="#">
+	        <img alt="In the jungle"
+	             src="img/gallery/thumbs/tile7.jpg" 
+	             data-image="img/gallery/big/tile7.jpg"
+	             style="display:none">
+	    </a>				
+	    <a href="#">
+	        <img alt="Note"
+	             src="img/gallery/thumbs/tile8.jpg" 
+	             data-image="img/gallery/big/tile8.jpg"
+	             data-description="This is a note"
+	             style="display:none">
+	    </a>
+
+	    <a href="#">
+	        <img alt="Off-Road Motorcycle"
+	             src="img/gallery/thumbs/tile9.jpg" 
+	             data-image="img/gallery/big/tile9.jpg"
+	             data-description="This is a motorcycle"
+	             style="display:none">
+	    </a>
+	</div>
+
+    <script src="js/jquery.min.js" ></script>
+    <script src="js/bootstrap.min.js" ></script>
+    <script src="js/nifty.min.js" ></script>
+    <script src="plugins/unitegallery/js/unitegallery.min.js" ></script>
+	<script src="plugins/unitegallery/themes/tiles/ug-theme-tiles.js" ></script>
+    <script>
+        $(document).on('nifty.ready', function () {	
+        	$.get("search.json", function(result){
+			    console.log(result)
+			});
+			$("#demo-gallery").unitegallery();		    
+        });
+    </script>
+</body>
+</html>
